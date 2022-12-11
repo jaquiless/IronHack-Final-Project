@@ -146,7 +146,7 @@ public class AdminControllerTests {
     void shouldShowAccount_whenGetIsPerformed_OK() throws Exception{
         Long id = 1L;
         mvcResult = mockMvc.perform(get("/admin/clientAccount/{accountId}", id)).andExpect(status().isOk()).andReturn();
-        assertTrue(mvcResult.getResponse().getContentAsString().contains("La Rosalia"));
+        assertTrue(mvcResult.getResponse().getContentAsString().contains("Joan"));
     }
 
     @Test
