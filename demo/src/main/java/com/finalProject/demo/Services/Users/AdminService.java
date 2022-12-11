@@ -5,6 +5,7 @@ import com.finalProject.demo.models.Accounts.*;
 import com.finalProject.demo.models.DTO.AccountDTO;
 import com.finalProject.demo.models.Users.AccountHolder;
 import com.finalProject.demo.models.Users.Address;
+import com.finalProject.demo.models.Users.Admin;
 import com.finalProject.demo.models.Users.ThirdParty;
 import com.finalProject.demo.repositories.Accounts.*;
 import com.finalProject.demo.repositories.Users.AccountHolderRepository;
@@ -89,4 +90,5 @@ public class AdminService implements AdminServiceInt {
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "El id especificado no se encuentra en la base de datos");
     }
+
 }

@@ -6,14 +6,15 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.Date;
 
 
 @Entity
 public class Checking extends Account {
-    private BigDecimal minimumBalance = BigDecimal.valueOf(250);
-    private BigDecimal monthlyMaintenanceFee = BigDecimal.valueOf(12);
+    private BigDecimal minimumBalance = BigDecimal.valueOf(250).setScale(2, RoundingMode.HALF_DOWN);;
+    private BigDecimal monthlyMaintenanceFee = BigDecimal.valueOf(12).setScale(2, RoundingMode.HALF_DOWN);
     private LocalDate creationDate = LocalDate.now();
 
     //Constructors
@@ -21,10 +22,9 @@ public class Checking extends Account {
     public Checking() {
     }
 
-    public Checking(BigDecimal balance, Integer secretKey, AccountHolder primaryOwner, AccountHolder secondaryOwner) {
-        super(balance, secretKey, primaryOwner, secondaryOwner);
-
-
+    public Checking(AccountHolder primaryOwner, AccountHolder secondaryOwner, String secretKey) {
+        super(primaryOwner, secondaryOwner);
+        setSecretKey(secretKey);
     }
 
     //Getters & Setters

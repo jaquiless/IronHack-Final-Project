@@ -4,23 +4,23 @@ import com.finalProject.demo.models.Users.AccountHolder;
 import com.finalProject.demo.models.Users.Status;
 import javax.persistence.Entity;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
 public class StudentChecking extends Account {
 
-    private BigDecimal minimumBalance;
-    private Date creationDate;
+    private BigDecimal minimumBalance = BigDecimal.valueOf(250);
+    private LocalDate creationDate = LocalDate.now();
 
     //Constructors
 
     public StudentChecking() {
     }
 
-    public StudentChecking(BigDecimal balance, Integer secretKey, AccountHolder primaryOwner, AccountHolder secondaryOwner, BigDecimal minimumBalance) {
-        super(balance, secretKey, primaryOwner, secondaryOwner);
-        this.minimumBalance = minimumBalance;
-        this.creationDate = creationDate;
+    public StudentChecking(AccountHolder primaryOwner, AccountHolder secondaryOwner, String secretKey) {
+        super(primaryOwner, secondaryOwner);
+        setSecretKey(secretKey);
     }
 
     //Getters & Setters
@@ -31,14 +31,6 @@ public class StudentChecking extends Account {
 
     public void setMinimumBalance(BigDecimal minimumBalance) {
         this.minimumBalance = minimumBalance;
-    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
     }
 }
 

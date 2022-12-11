@@ -16,7 +16,7 @@ public abstract class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long accountId;
     private BigDecimal balance;
-    private Integer secretKey;
+    private String secretKey;
     @ManyToOne
     private AccountHolder primaryOwner;
     @ManyToOne
@@ -29,13 +29,13 @@ public abstract class Account {
     public Account() {
     }
 
-    public Account(BigDecimal balance, Integer secretKey, AccountHolder primaryOwner, AccountHolder secondaryOwner) {
-        this.balance = balance;
-        this.secretKey = secretKey;
-        this.primaryOwner = primaryOwner;
-        this.secondaryOwner = secondaryOwner;
+    public Account(AccountHolder primaryOwner) {
+        setPrimaryOwner(primaryOwner);
+    }
 
-
+    public Account(AccountHolder primaryOwner, AccountHolder secondaryOwner) {
+        setPrimaryOwner(primaryOwner);
+        setSecondaryOwner(secondaryOwner);
     }
 
 
@@ -56,11 +56,11 @@ public abstract class Account {
         this.balance = balance;
     }
 
-    public Integer getSecretKey() {
+    public String getSecretKey() {
         return secretKey;
     }
 
-    public void setSecretKey(Integer secretKey) {
+    public void setSecretKey(String secretKey) {
         this.secretKey = secretKey;
     }
 

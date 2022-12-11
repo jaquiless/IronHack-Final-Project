@@ -30,10 +30,16 @@ public class Savings extends Account {
     public Savings() {
     }
 
-    public Savings(BigDecimal balance, Integer secretKey, AccountHolder primaryOwner, AccountHolder secondaryOwner, BigDecimal minimumBalance, BigDecimal interestRate) {
-        super(balance, secretKey, primaryOwner, secondaryOwner);
-        this.minimumBalance = minimumBalance;
-        this.interestRate = interestRate;
+    public Savings(AccountHolder primaryOwner, AccountHolder secondaryOwner, String secretKey) {
+        super(primaryOwner, secondaryOwner);
+        setSecretKey(secretKey);
+    }
+
+    public Savings(AccountHolder primaryOwner, AccountHolder secondaryOwner, String secretKey, BigDecimal minBalance, BigDecimal interestRate) {
+        super(primaryOwner, secondaryOwner);
+        setSecretKey(secretKey);
+        setMinimumBalance(minBalance);
+        setInterestRate(interestRate);
     }
 
     //Getters & Setters

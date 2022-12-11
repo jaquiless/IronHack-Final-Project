@@ -4,25 +4,23 @@ import java.math.BigDecimal;
 
 public class TransferDTO {
 
-    public static Long getReceiverAccountId;
-    private String nameSendAccount;
-    private static Long sendAccountId;
-    private Long receiverAccountId;
     private BigDecimal amount;
+    private  Long sendAccountId;
+    private String nameSendAccount;
+    private Long receiverAccountId;
 
 
-    public TransferDTO(String nameSendAccount, Long receiverAccountId, BigDecimal amount) {
+    public TransferDTO(BigDecimal amount, Long sendAccountId, String nameSendAccount, Long receiverAccountId) {
+        this.amount = amount;
+        this.sendAccountId = sendAccountId;
         this.nameSendAccount = nameSendAccount;
         this.receiverAccountId = receiverAccountId;
+    }
+
+    public TransferDTO(BigDecimal amount, Long sendAccountId, Long receiverAccountId) {
         this.amount = amount;
-    }
-
-    public static Long getGetReceiverAccountId() {
-        return getReceiverAccountId;
-    }
-
-    public static void setGetReceiverAccountId(Long getReceiverAccountId) {
-        TransferDTO.getReceiverAccountId = getReceiverAccountId;
+        this.sendAccountId = sendAccountId;
+        this.receiverAccountId = receiverAccountId;
     }
 
     public String getNameSendAccount() {
@@ -33,12 +31,12 @@ public class TransferDTO {
         this.nameSendAccount = nameSendAccount;
     }
 
-    public static Long getSendAccountId() {
+    public Long getSendAccountId() {
         return sendAccountId;
     }
 
-    public static void setSendAccountId(Long sendAccountId) {
-        TransferDTO.sendAccountId = sendAccountId;
+    public void setSendAccountId(Long sendAccountId) {
+        this.sendAccountId = sendAccountId;
     }
 
     public Long getReceiverAccountId() {
